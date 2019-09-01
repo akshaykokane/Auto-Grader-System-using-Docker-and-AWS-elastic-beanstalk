@@ -12,6 +12,10 @@ def autoGrade():
 	 exit
 
 	subprocess.call("rm -f ./output", shell=True) 
+	if(not os.access('test.sh', os.X_OK)):
+		return("test script no exe rights")
+		exit
+	
 	retcode = subprocess.call("./test.sh", shell=True)
 
 	result = "Score: " + str(retcode) + " out of 2 correct.";
